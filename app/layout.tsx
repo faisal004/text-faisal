@@ -12,10 +12,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'BG | Faisal Husain',
     description: 'Collection of Modern Texts',
-    url: 'https://bg-faisal.vercel.app/',
+    url: 'https://text-faisal.vercel.app/',
     images:[
       {
-        url:"https://bg-faisal.vercel.app/bg.png",
+        url:"https://text-faisal.vercel.app/bg.png",
         width:1200,
         height:639,
         alt:"Faisal Husain"
@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   },
   twitter:{
     card:"summary_large_image",
-    title:"BG | Faisal Husain",
-    description:"Collection of Modern Backgrounds",
+    title:"TEXT | Faisal Husain",
+    description:"Collection of Modern TEXT",
     images:[
       {
-        url:"https://bg-faisal.vercel.app/bg.png",
+        url:"https://text-faisal.vercel.app/bg.png",
         width:1200,
         height:639,
         alt:"Faisal Husain"

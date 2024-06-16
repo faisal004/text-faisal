@@ -1,2 +1,1 @@
-![Screenshot 2024-04-15 223744](https://github.com/faisal004/ui/assets/88244542/45049397-1d50-40fb-b835-4bfcb8734e64)
-![Screenshot 2024-04-15 223808](https://github.com/faisal004/ui/assets/88244542/35103bf1-8098-41e2-94ce-ef2e32d4f7e7)
+![Screenshot 2024-06-16 135826](https://github.com/faisal004/text-faisal/assets/88244542/1c259cda-00c9-440c-afc0-09c8bd710f24)

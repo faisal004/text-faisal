@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <ModeToggle />
             <Link
-              href="https://github.com/faisal004/ui"
+              href="https://github.com/faisal004/text-faisal"
               target="_blank"
               className="border-2 p-2 rounded-md"
             >

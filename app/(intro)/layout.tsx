@@ -1,5 +1,3 @@
-import MobileHeader from '@/components/mobile-header'
-import Sidebar from '@/components/sidebar'
 import Footer from './_components/footer'
 
 type Props = {
@@ -7,8 +5,6 @@ type Props = {
 }
 
 const IntroLayout = ({ children }: Props) => {
-  return <main className="">{children}
-  <Footer/>
-  </main>
+  return <main>{children}<Footer /></main>
 }
 export default IntroLayout

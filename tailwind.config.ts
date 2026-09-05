@@ -151,7 +151,9 @@ const config = {
 
       },
       fontFamily: {
-        cal: ["Cal", 'sans-serif']
+        cal: ["Cal", "sans-serif"],
+        sans: ["Inter", "ui-sans-serif", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "sans-serif"],
+        mono: ["SFMono-Regular", "SF Mono", "Roboto Mono", "ui-monospace", "monospace"]
       }
     },
   },

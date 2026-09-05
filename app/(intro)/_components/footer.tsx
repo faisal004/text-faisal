@@ -1,21 +1,10 @@
-const Footer = () => {
-    return ( <div className="h-8 mt-10 relative flex items-center  text-sm px-3  gap-1 max-w-[1300px] mx-auto ">
-      <div className="absolute items-center top-0 left-0 h-[1px] z-20 w-full animate-border-width rounded-full bg-gradient-to-r dark:from-white from-black dark:to-slate-50 to-slate-800  transition-all duration-10000"/>
+const Footer = () => (
+  <footer className="border-t">
+    <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-5 py-8 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground sm:flex-row sm:items-center sm:justify-between md:px-8">
+      <p>Built with care, not trends.</p>
+      <a href="https://www.faisalhusa.in/" target="_blank" rel="noreferrer" className="w-fit text-foreground underline decoration-border underline-offset-4 transition-colors duration-150 hover:decoration-foreground">Faisal Husain ↗</a>
+    </div>
+  </footer>
+)
 
-    
-        <p className="text-balance flex gap-2 text-center text-sm leading-loose text-muted-foreground md:text-left">
-          Built by{" "}
-          <a
-            href="https://www.faisalhusa.in/"
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium underline underline-offset-4"
-          >
-            @faisal.
-          </a>
-        </p>
-        
-    </div> );
-}
- 
-export default Footer;
+export default Footer

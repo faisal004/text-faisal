@@ -1,17 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/providers/theme-provider'
-const inter = Inter({ subsets: ['latin'] })
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 export const metadata: Metadata = {
-  title: 'Text | Faisal Husain',
-  description: 'Collection of Modern Text',
+  title: 'Type Lab — Text styles by Faisal Husain',
+  description: 'A small, copy-ready collection of expressive text styles.',
  
   openGraph: {
-    title: 'BG | Faisal Husain',
-    description: 'Collection of Modern Texts',
+    title: 'Type Lab — Text styles by Faisal Husain',
+    description: 'A small, copy-ready collection of expressive text styles.',
     url: 'https://text-faisal.vercel.app/',
     images:[
       {
@@ -24,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter:{
     card:"summary_large_image",
-    title:"TEXT | Faisal Husain",
-    description:"Collection of Modern TEXT",
+    title:"Type Lab — Text styles by Faisal Husain",
+    description:"A small, copy-ready collection of expressive text styles.",
     images:[
       {
         url:"https://text-faisal.vercel.app/bg.png",
@@ -45,8 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {' '}
+      <body className="font-sans">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

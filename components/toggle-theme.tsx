@@ -1,34 +1,18 @@
 'use client'
 
-import * as React from 'react'
 import useFixHydration from 'fix-hydration'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
-import { Button } from '@/components/ui/button'
-
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const hasMounted = useFixHydration()
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
-  if (!hasMounted) {
-    return null
-  }
+  if (!hasMounted) return <span className="block h-9 w-9" aria-hidden="true" />
 
+  const isDark = resolvedTheme === 'dark'
   return (
-    <Button
-      variant="link"
-      size="icon"
-      onClick={toggleTheme}
-      className={`border-2  ${theme === 'light' ? 'text-blue-500' : 'text-gray-100'}`}
-    >
-      {theme === 'light' ? (
-        <Sun className="h-5 w-5 " />
-      ) : (
-        <Moon className="h-5 w-5" />
-      )}
-    </Button>
+    <button type="button" onClick={() => setTheme(isDark ? 'light' : 'dark')} className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-muted-foreground transition-[background-color,color,transform] duration-150 ease-out hover:bg-secondary hover:text-foreground active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`} title={`Switch to ${isDark ? 'light' : 'dark'} theme`}>
+      {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+    </button>
   )
 }

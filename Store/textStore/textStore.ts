@@ -1,9 +1,10 @@
 import { create } from 'zustand'
+import type { CSSProperties } from 'react'
 interface TextState {
     textColor: string;
     settxtValue: (newValue: string) => void;
-    textDynamic: Record<string, string | number>
-    settxtDynamicValue: (newValue: Record<string, string | number>) => void;
+    textDynamic: CSSProperties
+    settxtDynamicValue: (newValue: CSSProperties) => void;
 }
 export const useTextStore = create<TextState>((set) => ({
     textColor: '',

@@ -8,7 +8,7 @@ type TextCardProps = { className: string; id: string; index: number; name: strin
 
 const TextCard = ({ className, id, index, name, note, sample, selected }: TextCardProps) => {
   const [copied, setCopied] = useState(false)
-  const { settxtValue } = useTextStore()
+  const { settxtValue, settxtDynamicValue } = useTextStore()
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(className)
@@ -28,7 +28,7 @@ const TextCard = ({ className, id, index, name, note, sample, selected }: TextCa
       <div className="flex items-center justify-between border-t pt-4">
         <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">#{id}</span>
         <div className="flex items-center gap-1">
-          <button type="button" onClick={() => settxtValue(className)} className="inline-flex h-9 items-center gap-2 rounded-sm px-3 font-mono text-[10px] uppercase tracking-[0.12em] transition-[background-color,color,transform] duration-150 ease-out hover:bg-secondary active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label={`Preview ${name}`}><Eye className="h-3.5 w-3.5" /> Preview</button>
+          <button type="button" onClick={() => { settxtDynamicValue({}); settxtValue(className) }} className="inline-flex h-9 items-center gap-2 rounded-sm px-3 font-mono text-[10px] uppercase tracking-[0.12em] transition-[background-color,color,transform] duration-150 ease-out hover:bg-secondary active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label={`Preview ${name}`}><Eye className="h-3.5 w-3.5" /> Preview</button>
           <button type="button" onClick={handleCopy} className="inline-flex h-9 min-w-9 items-center justify-center rounded-sm border bg-background px-2.5 transition-[background-color,color,transform] duration-150 ease-out hover:bg-foreground hover:text-background active:scale-[0.95] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label={copied ? `${name} class copied` : `Copy ${name} class`} title={copied ? 'Copied' : 'Copy class'}>{copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}</button>
         </div>
       </div>

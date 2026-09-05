@@ -90,6 +90,67 @@
   button, a { -webkit-tap-highlight-color: transparent; }
 }
 
+@layer components {
+  .playground-range {
+    height: 14px;
+    cursor: pointer;
+    appearance: none;
+    background: transparent;
+  }
+
+  .playground-range::-webkit-slider-runnable-track {
+    height: 1px;
+    background: hsl(var(--border));
+  }
+
+  .playground-range::-webkit-slider-thumb {
+    width: 12px;
+    height: 12px;
+    margin-top: -5.5px;
+    appearance: none;
+    border: 2px solid hsl(var(--background));
+    border-radius: 999px;
+    background: hsl(var(--foreground));
+    box-shadow: 0 0 0 1px hsl(var(--foreground));
+  }
+
+  .playground-range::-moz-range-track {
+    height: 1px;
+    background: hsl(var(--border));
+  }
+
+  .playground-range::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border: 2px solid hsl(var(--background));
+    border-radius: 999px;
+    background: hsl(var(--foreground));
+    box-shadow: 0 0 0 1px hsl(var(--foreground));
+  }
+
+  .playground-range:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 4px;
+  }
+
+  .color-well {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    appearance: none;
+    overflow: hidden;
+    border: 1px solid hsl(var(--border));
+    border-radius: 999px;
+    background: transparent;
+    padding: 2px;
+  }
+
+  .color-well::-webkit-color-swatch-wrapper { padding: 0; }
+  .color-well::-webkit-color-swatch { border: 0; border-radius: 999px; }
+  .color-well::-moz-color-swatch { border: 0; border-radius: 999px; }
+  .color-well:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
+}
+
 @layer utilities {
   .hairline-grid {
     background-image: linear-gradient(to right, hsl(var(--border) / 0.38) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--border) / 0.25) 1px, transparent 1px);

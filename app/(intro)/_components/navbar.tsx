@@ -1,5 +1,5 @@
 import { ModeToggle } from '@/components/toggle-theme'
-import { Github } from 'lucide-react'
+import { Code2 } from 'lucide-react'
 import Link from 'next/link'
 
 const Navbar = () => (
@@ -11,7 +11,7 @@ const Navbar = () => (
       </Link>
       <nav className="flex items-center gap-1" aria-label="Primary navigation">
         <Link href="https://github.com/faisal004/text-faisal" target="_blank" rel="noreferrer" className="inline-flex h-9 items-center gap-2 rounded-sm px-3 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground transition-[background-color,color,transform] duration-150 ease-out hover:bg-secondary hover:text-foreground active:scale-[0.97]">
-          <Github className="h-4 w-4" aria-hidden="true" /><span className="hidden sm:inline">Source</span>
+          <Code2 className="h-4 w-4" aria-hidden="true" /><span className="hidden sm:inline">Source</span>
         </Link>
         <ModeToggle />
       </nav>

@@ -1,13 +1,15 @@
 'use client'
 
-import useFixHydration from 'fix-hydration'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import { useSyncExternalStore } from 'react'
+
+const subscribe = () => () => undefined
 
 export function ModeToggle() {
   const { resolvedTheme, setTheme } = useTheme()
-  const hasMounted = useFixHydration()
-  if (!hasMounted) return <span className="block h-9 w-9" aria-hidden="true" />
+  const mounted = useSyncExternalStore(subscribe, () => true, () => false)
+  if (!mounted) return <span className="block h-9 w-9" aria-hidden="true" />
 
   const isDark = resolvedTheme === 'dark'
   return (

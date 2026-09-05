@@ -42,7 +42,7 @@ const TextsSection = () => {
           <div className="flex min-h-[620px] flex-col justify-between bg-background/92 p-5 sm:p-8 md:min-h-[680px] md:p-12 lg:p-16">
             <div className="flex items-start justify-between gap-6 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
               <span>Text treatment archive</span>
-              <span className="hidden text-right sm:block">06 gradients<br />05 ASCII</span>
+              <span className="hidden text-right sm:block">06 gradients<br />HELLO ASCII</span>
             </div>
 
             <div className="my-16 max-w-5xl">
@@ -88,14 +88,14 @@ const TextsSection = () => {
           <div className="grid border-b lg:grid-cols-[minmax(0,1fr)_360px]">
             <div className="px-5 py-10 md:px-8 md:py-14">
               <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Index / A01—A05</p>
-              <h2 className="font-cal text-4xl tracking-[-0.035em] sm:text-5xl">ASCII, literally.</h2>
+              <h2 className="font-cal text-4xl tracking-[-0.035em] sm:text-5xl">HELLO, in ASCII.</h2>
             </div>
             <div className="border-t px-5 py-8 lg:border-l lg:border-t-0 lg:p-8">
-              <p className="max-w-sm text-sm leading-6 text-muted-foreground">The same live specimen, translated into copyable plain-text treatments for READMEs, terminals, bios, and launch notes.</p>
+              <p className="max-w-sm text-sm leading-6 text-muted-foreground">One word, five treatments. Pick Raw, README, or Comment, then copy and paste it into a project.</p>
             </div>
           </div>
           <div className="grid lg:grid-cols-2">
-            {ASCII_STYLES.map((item, index) => <AsciiCard key={item.style} {...item} index={index + 1} source={copy} />)}
+            {ASCII_STYLES.map((item, index) => <AsciiCard key={item.style} {...item} index={index + 1} />)}
           </div>
         </div>
       </section>

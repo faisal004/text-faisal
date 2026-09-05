@@ -3,8 +3,8 @@
 import { Check, Copy } from 'lucide-react'
 import { useMemo, useState, type MouseEvent } from 'react'
 
-export type AsciiStyle = 'block' | 'hash' | 'outline' | 'binary' | 'frame' | 'terminal' | 'comment' | 'signal'
-type GlyphStyle = Extract<AsciiStyle, 'block' | 'hash' | 'outline' | 'binary'>
+export type AsciiStyle = 'block' | 'hash' | 'outline' | 'binary' | 'at' | 'star' | 'plus' | 'shade'
+type GlyphStyle = AsciiStyle
 type PasteFormat = 'raw' | 'readme' | 'comment'
 
 type AsciiCardProps = {
@@ -64,6 +64,10 @@ const GLYPH_MATERIALS: Record<GlyphStyle, { solid: string; shadow: string }> = {
   hash: { solid: '##', shadow: '..' },
   outline: { solid: '[]', shadow: '  ' },
   binary: { solid: '11', shadow: '00' },
+  at: { solid: '@@', shadow: '..' },
+  star: { solid: '**', shadow: '..' },
+  plus: { solid: '++', shadow: '--' },
+  shade: { solid: '▓▓', shadow: '░░' },
 }
 
 const renderGlyphs = (source: string, style: GlyphStyle) => {
@@ -85,20 +89,24 @@ const renderGlyphs = (source: string, style: GlyphStyle) => {
 }
 
 export const renderAscii = (source: string, style: AsciiStyle) => {
-  const text = cleanSource(source).slice(0, 48)
-  if (style === 'block' || style === 'hash' || style === 'outline' || style === 'binary') return renderGlyphs(text, style)
-  if (style === 'terminal') return `$ type --loud\n> ${text}\n█`
-  if (style === 'comment') return `/*${'='.repeat(text.length + 4)}\\\n|  ${text}  |\n\\*${'='.repeat(text.length + 4)}/`
-  if (style === 'signal') return `[TX/01] ${text.replaceAll(' ', '_')}\n         // END`
-
-  const rule = '─'.repeat(text.length + 2)
-  return `┌${rule}┐\n│ ${text} │\n└${rule}┘`
+  return renderGlyphs(cleanSource(source).slice(0, 48), style)
 }
 
-const wrapForProject = (output: string, format: PasteFormat, style: AsciiStyle) => {
+const wrapForProject = (output: string, format: PasteFormat) => {
   if (format === 'readme') return `\`\`\`\n${output}\n\`\`\``
-  if (format === 'comment' && style !== 'comment') return `/*\n${output}\n*/`
+  if (format === 'comment') return `/*\n${output}\n*/`
   return output
+}
+
+const STYLE_MARKS: Record<AsciiStyle, string> = {
+  block: '██',
+  hash: '##',
+  outline: '[]',
+  binary: '01',
+  at: '@@',
+  star: '**',
+  plus: '++',
+  shade: '▓░',
 }
 
 const PASTE_FORMATS: { id: PasteFormat; label: string }[] = [
@@ -109,9 +117,9 @@ const PASTE_FORMATS: { id: PasteFormat; label: string }[] = [
 
 const AsciiCard = ({ index, name, source, style }: AsciiCardProps) => {
   const [copied, setCopied] = useState(false)
-  const [format, setFormat] = useState<PasteFormat>(style === 'comment' ? 'comment' : 'readme')
+  const [format, setFormat] = useState<PasteFormat>('readme')
   const output = useMemo(() => renderAscii(source, style), [source, style])
-  const snippet = wrapForProject(output, format, style)
+  const snippet = wrapForProject(output, format)
 
   const copyAscii = async () => {
     await navigator.clipboard.writeText(`${snippet}\n`)
@@ -131,7 +139,7 @@ const AsciiCard = ({ index, name, source, style }: AsciiCardProps) => {
     <article className="flex min-h-[300px] flex-col justify-between border-b p-5 odd:lg:border-r md:p-7">
       <div className="flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
         <span>A{String(index).padStart(2, '0')} / {name}</span>
-        <span>{style === 'hash' ? '##' : style === 'binary' ? '01' : 'TXT'}</span>
+        <span>{STYLE_MARKS[style]}</span>
       </div>
 
       <pre className="my-10 cursor-text overflow-x-auto font-mono text-[11px] leading-[1.55] text-foreground select-all sm:text-[12px]" aria-label={`${name} ASCII preview`} onClick={selectOutput}>

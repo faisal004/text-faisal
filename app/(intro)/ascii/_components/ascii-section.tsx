@@ -10,10 +10,10 @@ const ASCII_STYLES: { name: string; style: AsciiStyle }[] = [
   { name: 'Hash', style: 'hash' },
   { name: 'Outline', style: 'outline' },
   { name: 'Binary', style: 'binary' },
-  { name: 'Frame', style: 'frame' },
-  { name: 'Terminal', style: 'terminal' },
-  { name: 'Comment', style: 'comment' },
-  { name: 'Signal', style: 'signal' },
+  { name: 'At Sign', style: 'at' },
+  { name: 'Asterisk', style: 'star' },
+  { name: 'Plus', style: 'plus' },
+  { name: 'Shade', style: 'shade' },
 ]
 
 const DEFAULT_TEXT = 'HELLO'
@@ -53,7 +53,7 @@ const AsciiSection = () => {
               <pre className="max-h-[360px] overflow-auto font-mono text-[9px] leading-[1.4] text-foreground sm:text-[11px]" aria-live="polite" aria-label="Live block ASCII preview">
                 {preview}
               </pre>
-              <p className="mt-8 max-w-md text-sm leading-6 text-muted-foreground">Type once and every treatment below updates live. Choose a paste format, then copy the actual ASCII output.</p>
+              <p className="mt-8 max-w-md text-sm leading-6 text-muted-foreground">Type once and every full-size letter treatment below updates live. Choose a material, then copy the actual ASCII output.</p>
             </div>
 
             <div className="flex items-end justify-between gap-4">
@@ -64,7 +64,7 @@ const AsciiSection = () => {
 
           <aside className="hidden border-l bg-background/92 p-8 md:flex md:flex-col md:justify-between">
             <pre className="font-mono text-[11px] leading-[1.35] text-muted-foreground" aria-hidden="true">{`┌──────────────┐
-│ █  #  []  01 │
+│ █  #  @  *   │
 │              │
 │  08 STYLES   │
 │  03 FORMATS  │

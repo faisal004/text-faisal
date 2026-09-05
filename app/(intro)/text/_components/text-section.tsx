@@ -1,12 +1,12 @@
 'use client'
 
-import TextCard from './_components/text-card'
-import AsciiCard, { type AsciiStyle } from './_components/ascii-card'
+import CollectionNav from '@/components/collection-nav'
+import TextCard from './text-card'
 import { useTextStore } from '@/Store/textStore/textStore'
 import { ArrowDown, RotateCcw } from 'lucide-react'
 import { useState } from 'react'
 
-export const TEXT_STYLES = [
+const TEXT_STYLES = [
   { id: 'graphite', name: 'Graphite', note: 'Quiet / Editorial', className: 'text-transparent bg-clip-text bg-gradient-to-r from-zinc-950 via-zinc-600 to-zinc-400 dark:from-stone-50 dark:via-stone-300 dark:to-stone-500' },
   { id: 'infrared', name: 'Infrared', note: 'Warm / Electric', className: 'text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 via-rose-500 to-orange-400 dark:from-fuchsia-400 dark:via-rose-400 dark:to-amber-300' },
   { id: 'signal', name: 'Signal', note: 'Sharp / Vital', className: 'text-transparent bg-clip-text bg-gradient-to-r from-lime-600 via-emerald-500 to-cyan-500 dark:from-lime-300 dark:via-emerald-300 dark:to-cyan-300' },
@@ -16,14 +16,6 @@ export const TEXT_STYLES = [
 ]
 
 const DEFAULT_COPY = 'Make words\nfeel visible.'
-
-const ASCII_STYLES: { name: string; style: AsciiStyle }[] = [
-  { name: 'Block', style: 'block' },
-  { name: 'Frame', style: 'frame' },
-  { name: 'Terminal', style: 'terminal' },
-  { name: 'Comment', style: 'comment' },
-  { name: 'Signal', style: 'signal' },
-]
 
 const TextsSection = () => {
   const [copy, setCopy] = useState(DEFAULT_COPY)
@@ -40,9 +32,9 @@ const TextsSection = () => {
       <section className="hairline-grid border-b">
         <div className="mx-auto grid max-w-[1400px] border-x md:grid-cols-[minmax(0,1fr)_280px]">
           <div className="flex min-h-[620px] flex-col justify-between bg-background/92 p-5 sm:p-8 md:min-h-[680px] md:p-12 lg:p-16">
-            <div className="flex items-start justify-between gap-6 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-              <span>Text treatment archive</span>
-              <span className="hidden text-right sm:block">06 gradients<br />HELLO ASCII</span>
+            <div className="flex items-start justify-between gap-6">
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Text treatment archive</p>
+              <CollectionNav compact />
             </div>
 
             <div className="my-16 max-w-5xl">
@@ -79,23 +71,6 @@ const TextsSection = () => {
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3">
             {TEXT_STYLES.map((style, index) => <TextCard key={style.id} {...style} sample={copy.replace(/\n/g, ' ')} index={index + 1} selected={activeStyle === style.className} />)}
-          </div>
-        </div>
-      </section>
-
-      <section id="ascii" className="hairline-grid border-t">
-        <div className="mx-auto max-w-[1400px] border-x bg-background/94">
-          <div className="grid border-b lg:grid-cols-[minmax(0,1fr)_360px]">
-            <div className="px-5 py-10 md:px-8 md:py-14">
-              <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Index / A01—A05</p>
-              <h2 className="font-cal text-4xl tracking-[-0.035em] sm:text-5xl">HELLO, in ASCII.</h2>
-            </div>
-            <div className="border-t px-5 py-8 lg:border-l lg:border-t-0 lg:p-8">
-              <p className="max-w-sm text-sm leading-6 text-muted-foreground">One word, five treatments. Pick Raw, README, or Comment, then copy and paste it into a project.</p>
-            </div>
-          </div>
-          <div className="grid lg:grid-cols-2">
-            {ASCII_STYLES.map((item, index) => <AsciiCard key={item.style} {...item} index={index + 1} />)}
           </div>
         </div>
       </section>

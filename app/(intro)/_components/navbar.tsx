@@ -1,3 +1,6 @@
+'use client'
+
+import CollectionNav from '@/components/collection-nav'
 import { ModeToggle } from '@/components/toggle-theme'
 import { Code2 } from 'lucide-react'
 import Link from 'next/link'
@@ -10,6 +13,9 @@ const Navbar = () => (
         <span className="hidden font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:inline">/ FH—24</span>
       </Link>
       <nav className="flex items-center gap-1" aria-label="Primary navigation">
+        <div className="hidden sm:block">
+          <CollectionNav />
+        </div>
         <Link href="https://github.com/faisal004/text-faisal" target="_blank" rel="noreferrer" className="inline-flex h-9 items-center gap-2 rounded-sm px-3 font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground transition-[background-color,color,transform] duration-150 ease-out hover:bg-secondary hover:text-foreground active:scale-[0.97]">
           <Code2 className="h-4 w-4" aria-hidden="true" /><span className="hidden sm:inline">Source</span>
         </Link>

@@ -9,6 +9,11 @@ export const docsConfig =
                 items: [],
             },
             {
+                title: 'ASCII',
+                href: '/',
+                items: [],
+            },
+            {
                 title: 'Text',
                 href: '/text',
                 items: [],

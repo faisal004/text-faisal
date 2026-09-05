@@ -38,8 +38,10 @@ const renderBlockHello = () => {
   ).join('\n')
 }
 
-const renderHello = (style: AsciiStyle) => {
-  if (style === 'block') return renderBlockHello()
+export const HELLO_BLOCK = renderBlockHello()
+
+export const renderHello = (style: AsciiStyle) => {
+  if (style === 'block') return HELLO_BLOCK
   if (style === 'terminal') return `$ type --loud\n> ${HELLO}\n█`
   if (style === 'comment') return `/*==================\\\n|  ${HELLO.padEnd(14)}  |\n\\*==================/`
   if (style === 'signal') return `[TX/01] ${HELLO}\n         // END`
